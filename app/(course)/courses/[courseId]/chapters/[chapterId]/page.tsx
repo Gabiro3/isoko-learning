@@ -4,7 +4,6 @@ import { Banner } from '@/components/banner'
 import { Preview } from '@/components/preview'
 import { VideoPlayer } from './_components/video-player'
 import { getChapter } from '@/actions/get-chapter'
-// import CourseEnrollButton from './_components/course-enroll-button'
 import { Separator } from '@/components/ui/separator'
 import { CourseProgressButton } from './_components/course-progress-button'
 

@@ -5,7 +5,6 @@ import CoursesList from '@/components/course-list'
 import { getDashboardCourses } from '@/actions/get-dashboard-courses'
 import { InfoCard } from './_components/info-card'
 
-
 export default async function Dashboard() {
   const { userId } = auth()
 
