@@ -4,7 +4,7 @@ import { CheckCircle, Clock } from 'lucide-react'
 import CoursesList from '@/components/course-list'
 import { getDashboardCourses } from '@/actions/get-dashboard-courses'
 import { InfoCard } from './_components/info-card'
-import { db } from '@/lib/db';
+import { db } from '@/lib/db'
 
 const insertDefaultCategories = async () => {
   const categories = ['Engineering', 'Music', 'Computer Science']
