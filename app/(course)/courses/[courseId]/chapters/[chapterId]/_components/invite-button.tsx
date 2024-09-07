@@ -3,8 +3,8 @@
 
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { FaCopy, FaCheck } from 'react-icons/fa'
 import { Button } from '@/components/ui/button'
+import { FaCopy, FaCheck } from 'react-icons/fa' // Import the icons you need
 
 export default function InviteButton() {
   const [isCopied, setIsCopied] = useState(false)
@@ -18,7 +18,7 @@ export default function InviteButton() {
 
   return (
     <Button
-      className="flex items-center space-x-1 text-white bg-blue-300 hover:bg-blue-600"
+      className={`flex items-center space-x-2 border border-black ${isCopied ? 'bg-green-200 text-green-800' : 'bg-white text-black'} hover:bg-gray-100`}
       onClick={copyToClipboard}
     >
       {isCopied ? <FaCheck /> : <FaCopy />}
@@ -26,3 +26,4 @@ export default function InviteButton() {
     </Button>
   )
 }
+
