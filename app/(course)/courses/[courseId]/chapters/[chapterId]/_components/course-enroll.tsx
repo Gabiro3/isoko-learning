@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
-import { enrollUser } from '@/actions/enroll-user' // Import your enrollUser function
 
 type CourseEnrollButtonProps = {
   userId: string
@@ -21,13 +20,21 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
         throw new Error('User ID or Course ID is missing')
       }
 
-      // Call the enrollUser function
-      const { success, message } = await enrollUser(userId, courseId)
+      // Make a request to the API
+      const response = await fetch('/api/enroll', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, courseId }),
+      })
 
-      if (success) {
-        toast.success(message) // Notify success
+      const result = await response.json()
+
+      if (response.ok) {
+        toast.success(result.message)
       } else {
-        toast.error(message) // Notify the user if already enrolled
+        toast.error(result.message)
       }
     } catch (error) {
       console.log(error)
