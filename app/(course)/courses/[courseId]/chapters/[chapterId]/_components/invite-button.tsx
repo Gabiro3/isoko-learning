@@ -18,7 +18,7 @@ export default function InviteButton() {
 
   return (
     <Button
-      className="flex items-center space-x-2 text-white bg-blue-500 hover:bg-blue-600"
+      className="flex items-center space-x-1 text-black bg-white-500 hover:bg-blue-600"
       onClick={copyToClipboard}
     >
       {isCopied ? <FaCheck /> : <FaCopy />}
