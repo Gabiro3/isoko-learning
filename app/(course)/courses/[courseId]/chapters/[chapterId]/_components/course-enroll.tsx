@@ -43,4 +43,3 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
     </Button>
   )
 }
-
