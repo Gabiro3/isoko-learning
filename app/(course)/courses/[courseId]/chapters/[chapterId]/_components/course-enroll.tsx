@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { Button } from '@/components/ui/button'
 import { redirect } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
 type CourseEnrollButtonProps = {
   userId: string
