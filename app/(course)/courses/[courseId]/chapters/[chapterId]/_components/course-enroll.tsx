@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
-import { db } from '@/lib/db'
+import { enrollUser } from '@/actions/enroll-user' // Import your enrollUser function
 
 type CourseEnrollButtonProps = {
   userId: string
@@ -21,10 +21,14 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
         throw new Error('User ID or Course ID is missing')
       }
 
-      // Insert into purchase table
-      await db.purchase.create({ data: { courseId, userId } })
+      // Call the enrollUser function
+      const { success, message } = await enrollUser(userId, courseId)
 
-      toast.success('You have successfully enrolled in the course!')
+      if (success) {
+        toast.success(message) // Notify success
+      } else {
+        toast.error(message) // Notify the user if already enrolled
+      }
     } catch (error) {
       console.log(error)
       toast.error('Something went wrong!')
@@ -35,7 +39,8 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
 
   return (
     <Button className="w-full md:w-auto" size="sm" onClick={onClick} disabled={isLoading}>
-      Enroll Now
+      {isLoading ? 'Enrolling...' : 'Enroll Now'}
     </Button>
   )
 }
+
