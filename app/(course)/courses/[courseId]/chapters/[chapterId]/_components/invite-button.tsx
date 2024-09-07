@@ -3,8 +3,8 @@
 
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { Button } from '@/components/ui/button'
 import { FaCopy, FaCheck } from 'react-icons/fa' // Import the icons you need
+import { Button } from '@/components/ui/button'
 
 export default function InviteButton() {
   const [isCopied, setIsCopied] = useState(false)
@@ -26,4 +26,5 @@ export default function InviteButton() {
     </Button>
   )
 }
+
 

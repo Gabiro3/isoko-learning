@@ -45,20 +45,22 @@ export default async function ChapterDetails({ params }: { params: { courseId: s
           />
         </div>
 
-        <div>
-          <div className="flex flex-col items-center justify-between p-4 md:flex-row">
+        <div className="p-4">
+          <div className="flex items-center justify-between">
             <h2 className="mb-2 text-2xl font-semibold">{chapter.title}</h2>
-            {purchase ? (
-              <CourseProgressButton
-                chapterId={params.chapterId}
-                courseId={params.courseId}
-                nextChapterId={nextChapter?.id}
-                isCompleted={!!userProgress?.isCompleted}
-              />
-            ) : (
-              <CourseEnrollButton courseId={params.courseId} userId={userId} />
-            )}
-            <InviteButton />
+            <div className="flex space-x-2">
+              {purchase ? (
+                <CourseProgressButton
+                  chapterId={params.chapterId}
+                  courseId={params.courseId}
+                  nextChapterId={nextChapter?.id}
+                  isCompleted={!!userProgress?.isCompleted}
+                />
+              ) : (
+                <CourseEnrollButton courseId={params.courseId} userId={userId} />
+              )}
+              <InviteButton />
+            </div>
           </div>
 
           <Separator />
