@@ -40,7 +40,6 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
         toast.error(result.message)
       }
     } catch (error) {
-      console.log(error)
       toast.error('Something went wrong!')
     } finally {
       setIsLoading(false)
@@ -53,4 +52,3 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
     </Button>
   )
 }
-
