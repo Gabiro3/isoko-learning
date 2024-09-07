@@ -13,7 +13,7 @@ export default function InviteButton() {
     navigator.clipboard.writeText(window.location.href)
     toast.success('Invitation link copied!')
     setIsCopied(true)
-    setTimeout(() => setIsCopied(false), 2000) // Reset button state after 2 seconds
+    setTimeout(() => setIsCopied(false), 2500) // Reset button state after 2 seconds
   }
 
   return (
