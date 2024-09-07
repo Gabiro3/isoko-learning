@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
+import { redirect } from 'next/navigation'
 
 type CourseEnrollButtonProps = {
   userId: string
@@ -33,6 +34,7 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
 
       if (response.ok) {
         toast.success(result.message)
+        return redirect('/')
       } else {
         toast.error(result.message)
       }
