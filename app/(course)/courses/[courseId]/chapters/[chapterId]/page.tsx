@@ -7,6 +7,7 @@ import { getChapter } from '@/actions/get-chapter'
 import { Separator } from '@/components/ui/separator'
 import { CourseProgressButton } from './_components/course-progress-button'
 import CourseEnrollButton from './_components/course-enroll'
+import InviteButton from './_components/invite-button'
 
 export default async function ChapterDetails({ params }: { params: { courseId: string; chapterId: string } }) {
   const { userId } = auth()
@@ -57,6 +58,7 @@ export default async function ChapterDetails({ params }: { params: { courseId: s
             ) : (
               <CourseEnrollButton courseId={params.courseId} userId={userId} />
             )}
+            <InviteButton />
           </div>
 
           <Separator />
