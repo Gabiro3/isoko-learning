@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 
 type CourseEnrollButtonProps = {
@@ -12,6 +12,7 @@ type CourseEnrollButtonProps = {
 
 export default function CourseEnrollButton({ userId, courseId }: CourseEnrollButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter() // Use Next.js router for navigation
 
   const onClick = async () => {
     try {
@@ -34,7 +35,7 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
 
       if (response.ok) {
         toast.success(result.message)
-        return redirect('/')
+        router.push('/') // Redirect to home page
       } else {
         toast.error(result.message)
       }
@@ -52,3 +53,4 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
     </Button>
   )
 }
+
