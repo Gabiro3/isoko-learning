@@ -26,6 +26,7 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
 
       toast.success('You have successfully enrolled in the course!')
     } catch (error) {
+      console.log(error)
       toast.error('Something went wrong!')
     } finally {
       setIsLoading(false)
