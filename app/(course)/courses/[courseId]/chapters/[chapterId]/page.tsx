@@ -15,7 +15,7 @@ export default async function ChapterDetails({ params }: { params: { courseId: s
     return redirect('/')
   }
 
-  const { chapter, course, muxData, attachments, nextChapter, userProgress, purchase } = await getChapter({
+  const { chapter, course, attachments, nextChapter, userProgress, purchase } = await getChapter({
     userId,
     ...params,
   })
