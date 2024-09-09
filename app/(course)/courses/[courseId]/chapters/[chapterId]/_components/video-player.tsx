@@ -89,7 +89,7 @@ export const VideoPlayer = ({
         <iframe
           ref={videoRef}
           src={videoUrl}
-          width="640"
+          width="700"
           height="480"
           allow="autoplay"
           onLoad={() => setIsReady(true)} // Set ready when iframe loads
