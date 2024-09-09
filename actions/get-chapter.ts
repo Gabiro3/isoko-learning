@@ -26,7 +26,7 @@ export async function getChapter({ userId, courseId, chapterId }: GetChapterArgs
     }
 
     if (chapter.isFree || purchase) {
-      muxData = await db.muxData.findUnique({ where: { chapterId } })
+      muxData = await db.chapter.findUnique({ where: { id: chapterId } })
 
       nextChapter = await db.chapter.findFirst({
         where: { courseId, isPublished: true, position: { gt: chapter.position } },

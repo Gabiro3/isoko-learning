@@ -17,14 +17,14 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
     }
 
     const chapter = await db.chapter.findUnique({ where: { id: params.chapterId, courseId: params.courseId } })
-    const muxData = await db.muxData.findUnique({ where: { chapterId: params.chapterId } })
+    const muxData = await db.chapter.findUnique({ where: { id: params.chapterId } })
 
     if (![chapter, muxData, chapter?.title, chapter?.description, chapter?.videoUrl].every(Boolean)) {
       return new NextResponse('Missing required fields', { status: 400 })
     }
 
     const publishedChapter = await db.chapter.update({
-      where: { id: params.chapterId, courseId: params.courseId },
+      where: { id: params.chapterId },
       data: { isPublished: true },
     })
 

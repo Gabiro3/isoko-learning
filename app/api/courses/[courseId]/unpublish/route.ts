@@ -10,8 +10,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { courseId: 
     }
 
     const course = await db.course.findUnique({
-      where: { id: params.courseId, createdById: userId },
-      include: { chapters: { include: { muxData: true } } },
+      where: { id: params.courseId, createdById: userId }
     })
 
     if (!course) {

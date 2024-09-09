@@ -2,27 +2,29 @@
 
 import * as z from 'zod'
 import axios from 'axios'
-import MuxPlayer from '@mux/mux-player-react'
-import { Pencil, PlusCircle, Video } from 'lucide-react'
+import { Pencil, PlusCircle } from 'lucide-react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
-import { Chapter, MuxData } from '@prisma/client'
+import { Chapter } from '@prisma/client'
 import { Button } from '@/components/ui/button'
-import { FileUpload } from '@/components/file-upload'
+import { Input } from '@/components/ui/input' // Assuming you have an Input component in your UI
 
 interface ChapterVideoFormProps {
-  initialData: Chapter & { muxData?: MuxData | null }
+  initialData: Chapter
   courseId: string
   chapterId: string
+  gvideoUrl: string | null
 }
 
 const formSchema = z.object({
-  videoUrl: z.string().min(1),
+  gVideoUrl: z.string().url().min(1, 'Please provide a valid Google Drive URL'),
 })
 
 export const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVideoFormProps) => {
   const [isEditing, setIsEditing] = useState(false)
+  // Use initialData.gVideoUrl for initialization
+  const [gVideoUrl, setGVideoUrl] = useState(initialData.gVideoUrl || '')
 
   const toggleEdit = () => setIsEditing((current) => !current)
 
@@ -39,52 +41,71 @@ export const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVi
     }
   }
 
+  const handleSubmit = () => {
+    const parsed = formSchema.safeParse({ gVideoUrl })
+    if (parsed.success) {
+      onSubmit(parsed.data)
+    } else {
+      toast.error(parsed.error.issues[0].message)
+    }
+  }
+
   return (
     <div className="mt-6 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
         Chapter video
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && <>Cancel</>}
-          {!isEditing && !initialData.videoUrl && (
+          {!isEditing && !gVideoUrl && (
             <>
               <PlusCircle className="mr-2 h-4 w-4" />
-              Add a video
+              Add a video URL
             </>
           )}
-          {!isEditing && initialData.videoUrl && (
+          {!isEditing && gVideoUrl && (
             <>
               <Pencil className="mr-2 h-4 w-4" />
-              Edit video
+              Edit video URL
             </>
           )}
         </Button>
       </div>
-      {!isEditing &&
-        (!initialData.videoUrl ? (
-          <div className="flex h-60 items-center justify-center rounded-md bg-slate-200">
-            <Video className="h-10 w-10 text-slate-500" />
-          </div>
-        ) : (
-          <div className="relative mt-2 aspect-video">
-            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ''} />
-          </div>
-        ))}
-      {isEditing && (
-        <div>
-          <FileUpload
-            endpoint="chapterVideo"
-            onChange={(url) => {
-              if (url) {
-                onSubmit({ videoUrl: url })
-              }
-            }}
-          />
-          <div className="mt-4 text-xs text-muted-foreground">Upload this chapter&apos;s video</div>
+
+      {!isEditing && (
+        <div className="relative mt-2 aspect-video">
+          {gVideoUrl ? (
+            <iframe
+              src={gVideoUrl}
+              width="100%"
+              height="100%"
+              allow="autoplay"
+              title="Google Drive Video"
+            />
+          ) : (
+            <div className="flex h-60 items-center justify-center rounded-md bg-slate-200">
+              <p>No video available</p>
+            </div>
+          )}
         </div>
       )}
-      {initialData.videoUrl && !isEditing && (
+
+      {isEditing && (
+        <div className="mt-4">
+          <Input
+            type="text"
+            placeholder="Paste Google Drive video URL here"
+            value={gVideoUrl}
+            onChange={(e) => setGVideoUrl(e.target.value)}
+          />
+          <Button onClick={handleSubmit} className="mt-2">
+            Save URL
+          </Button>
+        </div>
+      )}
+
+      {gVideoUrl && !isEditing && (
         <div className="mt-2 text-xs text-muted-foreground">
-          Videos can take a few minutes to process. Refresh the page if video does not appear.
+          If the video doesn&apost appear, make sure the link is correct and shared publicly from Google Drive.
         </div>
       )}
     </div>

@@ -24,10 +24,7 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
     where: {
       id: params.chapterId,
       courseId: params.courseId,
-    },
-    include: {
-      muxData: true,
-    },
+    }
   })
 
   if (!chapter) {
@@ -95,7 +92,7 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
               <IconBadge icon={Video} />
               <h2 className="text-xl">Add a video</h2>
             </div>
-            <ChapterVideoForm initialData={chapter} chapterId={params.chapterId} courseId={params.courseId} />
+            <ChapterVideoForm initialData={chapter} chapterId={params.chapterId} courseId={params.courseId} gvideoUrl={chapter?.gVideoUrl}/>
           </div>
         </div>
       </div>
