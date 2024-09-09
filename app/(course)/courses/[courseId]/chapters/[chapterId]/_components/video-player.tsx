@@ -1,8 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import MuxPlayer from '@mux/mux-player-react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { Loader2, Lock } from 'lucide-react'
@@ -11,7 +10,7 @@ import { cn } from '@/lib/utils'
 import { useConfettiStore } from '@/hooks/use-confetti'
 
 interface VideoPlayerProps {
-  playbackId: string
+  videoUrl: string // Pass the Google Drive embed URL here
   courseId: string
   chapterId: string
   nextChapterId?: string
@@ -21,7 +20,7 @@ interface VideoPlayerProps {
 }
 
 export const VideoPlayer = ({
-  playbackId,
+  videoUrl,
   courseId,
   chapterId,
   nextChapterId,
@@ -32,6 +31,7 @@ export const VideoPlayer = ({
   const [isReady, setIsReady] = useState(false)
   const router = useRouter()
   const confetti = useConfettiStore()
+  const videoRef = useRef<HTMLIFrameElement>(null) // Create a ref for the iframe
 
   const onEnd = async () => {
     try {
@@ -56,6 +56,13 @@ export const VideoPlayer = ({
     }
   }
 
+  // Listen for when the video finishes
+  const handleVideoEnd = () => {
+    if (completeOnEnd && videoRef.current) {
+      onEnd()
+    }
+  }
+
   return (
     <div className="relative aspect-video">
       {!isReady && !isLocked && (
@@ -70,13 +77,15 @@ export const VideoPlayer = ({
         </div>
       )}
       {!isLocked && (
-        <MuxPlayer
-          title={title}
+        <iframe
+          ref={videoRef}
+          src={videoUrl}
+          width="640"
+          height="480"
+          allow="autoplay"
+          onLoad={() => setIsReady(true)} // Set ready when iframe loads
+          onEnded={handleVideoEnd} // Track when the video ends
           className={cn(!isReady && 'hidden')}
-          onCanPlay={() => setIsReady(true)}
-          onEnded={onEnd}
-          autoPlay
-          playbackId={playbackId}
         />
       )}
     </div>
