@@ -31,7 +31,7 @@ const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId
     return redirect('/')
   }
 
-  const requiredFields = [chapter.title, chapter.description, chapter.videoUrl]
+  const requiredFields = [chapter.title, chapter.description, chapter.gVideoUrl]
 
   const totalFields = requiredFields.length
   const completedFields = requiredFields.filter(Boolean).length
