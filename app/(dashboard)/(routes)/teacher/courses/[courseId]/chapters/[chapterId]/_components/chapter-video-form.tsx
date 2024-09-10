@@ -93,6 +93,7 @@ export const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVi
         <div className="mt-4">
           <Input
             type="text"
+            name="gvideoUrl"
             placeholder="Paste Google Drive video URL here"
             value={gVideoUrl}
             onChange={(e) => setGVideoUrl(e.target.value)}
@@ -105,7 +106,7 @@ export const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVi
 
       {gVideoUrl && !isEditing && (
         <div className="mt-2 text-xs text-muted-foreground">
-          If the video doesn&apost appear, make sure the link is correct and shared publicly from Google Drive.
+          If the video does not appear, make sure the link is correct and shared publicly from Google Drive.
         </div>
       )}
     </div>
