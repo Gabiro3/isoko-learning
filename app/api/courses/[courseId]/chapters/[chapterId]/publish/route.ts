@@ -17,9 +17,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Params }) {
     }
 
     const chapter = await db.chapter.findUnique({ where: { id: params.chapterId, courseId: params.courseId } })
-    const muxData = await db.chapter.findUnique({ where: { id: params.chapterId } })
-
-    if (![chapter, muxData, chapter?.title, chapter?.description, chapter?.videoUrl].every(Boolean)) {
+    
+    if (![chapter, chapter?.title, chapter?.description, chapter?.videoUrl].every(Boolean)) {
       return new NextResponse('Missing required fields', { status: 400 })
     }
 
