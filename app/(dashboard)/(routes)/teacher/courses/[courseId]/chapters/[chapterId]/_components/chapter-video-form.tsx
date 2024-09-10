@@ -93,7 +93,7 @@ export const ChapterVideoForm = ({ initialData, courseId, chapterId }: ChapterVi
         <div className="mt-4">
           <Input
             type="text"
-            name="gvideoUrl"
+            name="gVideoUrl"
             placeholder="Paste Google Drive video URL here"
             value={gVideoUrl}
             onChange={(e) => setGVideoUrl(e.target.value)}
