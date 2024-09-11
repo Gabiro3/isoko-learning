@@ -8,8 +8,11 @@ import { ConfettiProvider } from '@/components/providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'LMS (Learning Management System)',
-  description: 'LMS (Learning Management System)',
+  title: 'Schoolie LMS | Dashboard',
+  description: 'Schoolie is an LMS (Learning Management System) and an online tutoring platform.',
+  icons: {
+    icon: "/cap.svg", // Use the relative path to the icon file
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
