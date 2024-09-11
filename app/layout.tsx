@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Schoolie LMS | Dashboard',
   description: 'Schoolie is an LMS (Learning Management System) and an online tutoring platform.',
   icons: {
-    icon: "/cap.svg", // Use the relative path to the icon file
+    icon: '/cap.svg', // Use the relative path to the icon file
   },
 }
 
