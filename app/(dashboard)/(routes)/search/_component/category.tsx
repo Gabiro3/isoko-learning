@@ -24,16 +24,16 @@ interface CategoriesProps {
 
 // Updated icon map with relevant icons for the provided categories
 const iconMap: Record<Category['name'], IconType> = {
-  Mathematics: FcCalculator,          // Icon for Mathematics
-  Chemistry: FcBiohazard,             // Icon for Chemistry
-  Physics: FcEngineering,             // Using engineering for Physics (can change if desired)
-  Biology: FcBiotech,                   // Icon for Biology (representing nature, can be changed)
-  Languages: FcReading,               // Icon for Languages (represents reading)
-  'Technology': FcMultipleDevices, // Icon for Computer Science
-  History: FcBusinessman,             // Icon for History (can be changed if preferred)
-  Geography: FcGlobe,                 // Icon for Geography
-  Economics: FcSalesPerformance,      // Icon for Economics (business-related)
-  'Arts & Literature': FcOldTimeCamera, // Icon for Arts and Literature (using camera)
+  Mathematics: FcCalculator,
+  Chemistry: FcBiohazard,
+  Physics: FcEngineering,
+  Biology: FcBiotech,
+  Languages: FcReading,
+  'Technology': FcMultipleDevices,
+  History: FcBusinessman,
+  Geography: FcGlobe,
+  Economics: FcSalesPerformance,
+  'Arts & Literature': FcOldTimeCamera,
   'Science': FcBiomass,
   'Religion': FcConferenceCall
 }
