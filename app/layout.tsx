@@ -17,10 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ClerkProvider>
       <html lang="en">
-        <head>
-          {/* Link to favicon */}
-          <link rel="icon" href="public/cap.svg" type="image/svg+xml" />
-        </head>
         <body className={inter.className}>
           <ConfettiProvider />
           <ToastProvider />

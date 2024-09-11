@@ -29,13 +29,13 @@ const iconMap: Record<Category['name'], IconType> = {
   Physics: FcEngineering,
   Biology: FcBiotech,
   Languages: FcReading,
-  'Technology': FcMultipleDevices,
+  Technology: FcMultipleDevices,
   History: FcBusinessman,
   Geography: FcGlobe,
   Economics: FcSalesPerformance,
   'Arts & Literature': FcOldTimeCamera,
-  'Science': FcBiomass,
-  'Religion': FcConferenceCall
+  Science: FcBiomass,
+  Religion: FcConferenceCall
 }
 
 export const Categories = ({ items }: CategoriesProps) => {
