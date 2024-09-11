@@ -48,7 +48,7 @@ export default function CourseCard({
           {progress !== null ? (
             <CourseProgress variant={progress === 100 ? 'success' : 'default'} size="sm" value={progress} />
           ) : (
-            <p className="text-md font-medium text-slate-700 md:text-sm">{formatPrice(price)}</p>
+            <p className="text-md font-medium text-slate-700 md:text-sm">{price} RWF</p>
           )}
         </div>
       </div>

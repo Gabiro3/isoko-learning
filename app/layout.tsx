@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang="en">
         <head>
           {/* Link to favicon */}
-          <link rel="icon" href="/cap.svg" type="image/svg+xml" />
+          <link rel="icon" href="public/cap.svg" type="image/svg+xml" />
         </head>
         <body className={inter.className}>
           <ConfettiProvider />
