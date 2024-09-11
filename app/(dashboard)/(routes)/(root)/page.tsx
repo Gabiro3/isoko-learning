@@ -4,29 +4,6 @@ import { CheckCircle, Clock } from 'lucide-react'
 import CoursesList from '@/components/course-list'
 import { getDashboardCourses } from '@/actions/get-dashboard-courses'
 import { InfoCard } from './_components/info-card'
-import { db } from '@/lib/db'
-
-const insertDefaultCategories = async () => {
-  const categories = ['Mathematics',
-   'Physics',
-   'Chemistry',
-   'Science',
-   'Biology',
-   'Technology',
-   'Languages',
-   'Arts & Literature',
-   'Geography',
-   'History',
-   'Economics',
-   'Religion']
-  for (const category of categories) {
-    await db.category.upsert({
-      where: { name: category },
-      update: {}, // No update needed, just ensure it exists
-      create: { name: category },
-    })
-  }
-}
 
 export default async function Dashboard() {
   const { userId } = auth()
@@ -34,7 +11,6 @@ export default async function Dashboard() {
   if (!userId) {
     return redirect('/')
   }
-  await insertDefaultCategories()
 
   const { completedCourses, coursesInProgress } = await getDashboardCourses(userId)
 

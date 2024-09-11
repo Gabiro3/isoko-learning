@@ -84,5 +84,45 @@ body,
 .ql-container {
   font-size: 16px !important;
 }
+/* Container for the categories list */
+.categories-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 16px; /* To make space for the slider */
+}
+
+/* Custom scrollbar for horizontal scrolling */
+.categories-list {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Customizing the scrollbar */
+.categories-container::-webkit-scrollbar {
+  height: 6px; /* The height of the scrollbar (thin) */
+}
+
+.categories-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar color */
+  border-radius: 10px; /* Round edges */
+}
+
+.categories-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Track color (lighter) */
+}
+
+/* Change the thumb color on hover */
+.categories-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker color when hovered */
+}
+
+/* Optional: Make the scroll area more pronounced */
+.categories-container:hover {
+  scrollbar-color: #888 #f1f1f1; /* Custom scrollbar colors */
+}
+
 
 @import "~@uploadthing/react/styles.css"
