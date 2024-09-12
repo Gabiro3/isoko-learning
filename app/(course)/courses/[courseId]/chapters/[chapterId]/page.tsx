@@ -35,7 +35,7 @@ export default async function ChapterDetails({ params }: { params: { courseId: s
       <div className="mx-auto flex max-w-4xl flex-col pb-20">
         <div className="p-4">
           <VideoPlayer
-            videoUrl="https://drive.google.com/file/d/11CqF2oFeel3J7Y66FNrlq1JAOLS9aUvu/preview"
+            videoUrl={chapter?.gVideoUrl || 'https://drive.google.com/file/d/1LDPRA42Z5L-N2c7B1Oes1PAS8JAsEBpq/preview'}
             chapterId={chapter.id}
             courseId={params.courseId}
             nextChapterId={nextChapter?.id}
