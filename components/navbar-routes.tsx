@@ -11,12 +11,17 @@ import { isTeacher } from '@/lib/teacher'
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth()
-
   const pathname = usePathname()
 
   const isTeacherPage = pathname?.startsWith('/teacher')
   const isCoursePage = pathname?.includes('/courses')
   const isSearchPage = pathname?.includes('/search')
+
+  // Fetch the admin ID from environment variables
+  const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
+
+  // Check if the logged-in user is an admin
+  const isAdmin = userId === ADMIN_ID
 
   return (
     <>
@@ -33,10 +38,10 @@ export const NavbarRoutes = () => {
               Exit
             </Button>
           </Link>
-        ) : isTeacher(userId) ? (
+        ) : isTeacher(userId) || isAdmin ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
-              Teacher mode
+              {isAdmin ? 'Admin mode' : 'Teacher mode'}
             </Button>
           </Link>
         ) : null}
