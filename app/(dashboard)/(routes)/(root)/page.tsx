@@ -1,8 +1,9 @@
 import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
-import { CheckCircle, Clock } from 'lucide-react'
+import { CheckCircle, Clock, Check } from 'lucide-react'
 import CoursesList from '@/components/course-list'
 import { getDashboardCourses } from '@/actions/get-dashboard-courses'
+import { getAdminAnalytics } from '@/actions/get-admin-courses'
 import { InfoCard } from './_components/info-card'
 
 export default async function Dashboard() {
@@ -12,8 +13,26 @@ export default async function Dashboard() {
     return redirect('/')
   }
 
+  // Get the ADMIN_ID from environment variables
+  const ADMIN_ID = process.env.ADMIN_ID
   const { completedCourses, coursesInProgress } = await getDashboardCourses(userId)
 
+  // Check if the current user is the admin
+  if (userId === ADMIN_ID) {
+    // Fetch admin analytics data (all published and unpublished courses)
+    const { publishedCourses, unpublishedCourses } = await getAdminAnalytics()
+
+    // Render admin dashboard with "Courses Published" and "Courses Pending"
+    return (
+      <div className="space-y-4 p-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <InfoCard icon={Check} label="Courses Published" numberOfItems={publishedCourses.length} variant="success" />
+          <InfoCard icon={Clock} label="Courses Pending" numberOfItems={unpublishedCourses.length} />
+        </div>
+        <CoursesList items={[...completedCourses, ...coursesInProgress]} />
+      </div>
+    )
+  }
   return (
     <div className="space-y-4 p-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

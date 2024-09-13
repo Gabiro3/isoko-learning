@@ -11,7 +11,25 @@ export default async function Courses() {
     return redirect('/')
   }
 
-  const courses = await db.course.findMany({ where: { createdById: userId }, orderBy: { createdAt: 'desc' } })
+  // Fetch the admin ID from environment variables
+  const ADMIN_ID = process.env.ADMIN_ID
+
+  let courses
+
+  // Check if the logged-in user is an admin
+  if (userId === ADMIN_ID) {
+    // If admin, return all unpublished courses
+    courses = await db.course.findMany({
+      where: { isPublished: false },
+      orderBy: { createdAt: 'desc' },
+    })
+  } else {
+    // If not admin, return courses created by the logged-in teacher
+    courses = await db.course.findMany({
+      where: { createdById: userId },
+      orderBy: { createdAt: 'desc' },
+    })
+  }
 
   return (
     <div className="space-y-6 p-6">
