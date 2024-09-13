@@ -29,6 +29,7 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+  const [isAdmin, setIsAdmin] = React.useState(false)
 
   const table = useReactTable({
     data,
@@ -46,15 +47,14 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   })
 
   const { userId } = useAuth()
-
-  // Fetch admin and teacher IDs from environment variables
-  const ADMIN_ID = process.env.ADMIN_ID
-  const isAdmin = userId === ADMIN_ID
+  React.useEffect(() => {
+    const adminId = process.env.ADMIN_ID
+    setIsAdmin(userId === adminId)
+  }, [userId])
 
   if (!isTeacher(userId)) {
     return redirect('/')
   }
-
   return (
     <div>
       <div className="flex items-center justify-between py-4">
