@@ -70,7 +70,7 @@ export default function Actions({ disabled, isPublished, courseId }: ActionsProp
   return (
     <div className="flex items-center gap-x-2">
       {/* Render Publish/Unpublish button only if the user is an admin */}
-      {!isAdmin && (
+      {isAdmin && (
         <Button disabled={disabled || isLoading} variant="outline" size="sm" onClick={onPublish}>
           {isPublished ? 'Unpublish' : 'Publish'}
         </Button>

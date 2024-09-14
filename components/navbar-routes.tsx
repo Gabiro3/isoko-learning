@@ -18,7 +18,7 @@ export const NavbarRoutes = () => {
   const isSearchPage = pathname?.includes('/search')
 
   // Fetch the admin ID from environment variables
-  const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
+  const ADMIN_ID = process.env.ADMIN_ID
 
   // Check if the logged-in user is an admin
   const isAdmin = userId === ADMIN_ID
@@ -41,7 +41,7 @@ export const NavbarRoutes = () => {
         ) : isTeacher(userId) || isAdmin ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
-              {!isAdmin ? 'Admin mode' : 'Teacher mode'}
+              {isAdmin ? 'Admin mode' : 'Teacher mode'}
             </Button>
           </Link>
         ) : null}
