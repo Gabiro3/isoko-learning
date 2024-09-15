@@ -18,7 +18,7 @@ export default function Chart({ data }: ChartProps) {
             fontSize={12}
             tickLine={false}
             axisLine={false}
-            tickFormatter={(value) => `$${value}`}
+            tickFormatter={(value) => `RWF${value}`}
           />
 
           <Bar dataKey="total" fill="#0369a1" radius={[4, 4, 0, 0]} />
