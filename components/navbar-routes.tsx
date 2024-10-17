@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { SearchInput } from './search-input'
 import { isTeacher } from '@/lib/teacher'
+import { isAdminUser } from '@/lib/check-admin'
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth()
@@ -17,11 +18,9 @@ export const NavbarRoutes = () => {
   const isCoursePage = pathname?.includes('/courses')
   const isSearchPage = pathname?.includes('/search')
 
-  // Fetch the admin ID from environment variables
-  const ADMIN_ID = process.env.ADMIN_ID
 
   // Check if the logged-in user is an admin
-  const isAdmin = userId === ADMIN_ID
+  const isAdmin = isAdminUser(userId || '')
 
   return (
     <>
@@ -41,7 +40,7 @@ export const NavbarRoutes = () => {
         ) : isTeacher(userId) || isAdmin ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
-              {(userId === ADMIN_ID) ? 'Admin mode' : 'Teacher mode'}
+              {isAdmin ? 'Admin mode' : 'Teacher mode'}
             </Button>
           </Link>
         ) : null}
