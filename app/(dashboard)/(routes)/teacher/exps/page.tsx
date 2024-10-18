@@ -3,11 +3,15 @@ import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
 import { DataTable } from './_component/data-table'
 import { columns } from './_component/columns'
+import { isAdminUser } from '@/lib/check-admin'
 
 export default async function Courses() {
   const { userId } = auth()
 
   if (!userId) {
+    return redirect('/')
+  }
+  if (!isAdminUser(userId || 'user_0')) {
     return redirect('/')
   }
 

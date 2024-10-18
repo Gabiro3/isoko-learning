@@ -34,11 +34,12 @@ export const NavbarRoutes = () => {
             </Button>
           </Link>
         ) : isTeacher(userId) || isAdminUser(userId || '') ? (
-          <Link href="/teacher/courses">
-            <Button size="sm" variant="ghost">
-              {isAdminUser(userId || 'user_0') ? 'Admin mode' : 'Teacher mode'}
-            </Button>
-          </Link>
+            <Link href={isAdminUser(userId || 'user_0') ? '/teacher/exps/' : '/teacher/courses'}>
+              <Button size="sm" variant="ghost">
+                {isAdminUser(userId || 'user_0') ? 'Admin mode' : 'Teacher mode'}
+              </Button>
+            </Link>
+
         ) : null}
         <UserButton afterSignOutUrl="/" />
       </div>
