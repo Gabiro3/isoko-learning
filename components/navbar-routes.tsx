@@ -18,9 +18,6 @@ export const NavbarRoutes = () => {
   const isCoursePage = pathname?.includes('/courses')
   const isSearchPage = pathname?.includes('/search')
 
-  // Check if the logged-in user is an admin
-  const isAdmin = isAdminUser(userId || '')
-
   return (
     <>
       {isSearchPage && (
@@ -36,10 +33,10 @@ export const NavbarRoutes = () => {
               Exit
             </Button>
           </Link>
-        ) : isTeacher(userId) || isAdmin ? (
+        ) : isTeacher(userId) || isAdminUser(userId || '') ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
-              {isAdmin ? 'Admin mode' : 'Teacher mode'}
+              {isAdminUser(userId || '') ? 'Admin mode' : 'Teacher mode'}
             </Button>
           </Link>
         ) : null}
