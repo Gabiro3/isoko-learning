@@ -18,7 +18,6 @@ export const NavbarRoutes = () => {
   const isCoursePage = pathname?.includes('/courses')
   const isSearchPage = pathname?.includes('/search')
 
-
   // Check if the logged-in user is an admin
   const isAdmin = isAdminUser(userId || '')
 
