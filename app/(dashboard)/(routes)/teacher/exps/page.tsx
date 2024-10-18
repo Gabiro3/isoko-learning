@@ -5,7 +5,7 @@ import { DataTable } from './_component/data-table'
 import { columns } from './_component/columns'
 import { isAdminUser } from '@/lib/check-admin'
 
-export default async function Courses() {
+export default async function Exps() {
   const { userId } = auth()
 
   if (!userId) {
