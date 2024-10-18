@@ -4,7 +4,7 @@ import { isAdminUser } from '@/lib/check-admin'
 
 export default function TeacherLayout({ children }: { children: React.ReactNode }) {
   const { userId } = auth()
-  if (!isAdminUser(userId || 'user_0')) {
+  if (!userId || !isAdminUser(userId)) {
     return redirect('/')
   }
 

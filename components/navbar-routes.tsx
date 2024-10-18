@@ -34,9 +34,9 @@ export const NavbarRoutes = () => {
             </Button>
           </Link>
         ) : isTeacher(userId) || isAdminUser(userId || '') ? (
-            <Link href={isAdminUser(userId || 'user_0') ? '/teacher/exps/' : '/teacher/courses'}>
+            <Link href={!userId || !isAdminUser(userId) ? '/teacher/exps/' : '/teacher/courses'}>
               <Button size="sm" variant="ghost">
-                {isAdminUser(userId || 'user_0') ? 'Admin mode' : 'Teacher mode'}
+                {!userId || !isAdminUser(userId) ? 'Admin mode' : 'Teacher mode'}
               </Button>
             </Link>
 

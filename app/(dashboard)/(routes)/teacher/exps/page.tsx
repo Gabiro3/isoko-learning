@@ -11,7 +11,7 @@ export default async function Courses() {
   if (!userId) {
     return redirect('/')
   }
-  if (!isAdminUser(userId || 'user_0')) {
+  if (!userId || !isAdminUser(userId)) {
     return redirect('/')
   }
 
