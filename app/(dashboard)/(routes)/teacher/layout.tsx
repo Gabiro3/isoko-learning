@@ -7,7 +7,6 @@ export default async function ExpLayout({ children }: { children: React.ReactNod
   const { userId } = auth()
 
   // Check if the user is an admin using your `isAdminUser` function
-  console.log(userId)
   if (!isAdminUser(userId)) {
     return redirect('/')
   }
