@@ -14,7 +14,7 @@ export default async function Dashboard() {
   }
 
   // Get the ADMIN_ID from environment variables
-  const ADMIN_ID = process.env.ADMIN_ID
+  const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
   const { completedCourses, coursesInProgress } = await getDashboardCourses(userId)
 
   // Check if the current user is the admin

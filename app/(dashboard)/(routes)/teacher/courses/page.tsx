@@ -12,7 +12,7 @@ export default async function Courses() {
   }
 
   // Fetch the admin ID from environment variables
-  const ADMIN_ID = process.env.ADMIN_ID
+  const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
 
   let courses
 

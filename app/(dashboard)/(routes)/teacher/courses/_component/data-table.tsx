@@ -48,7 +48,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
 
   const { userId } = useAuth()
   React.useEffect(() => {
-    const adminId = process.env.ADMIN_ID
+    const adminId = process.env.NEXT_PUBLIC_ADMIN_ID
     setIsAdmin(userId === adminId)
   }, [userId])
 

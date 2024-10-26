@@ -8,15 +8,12 @@ import { isAdminUser } from '@/lib/check-admin'
 export default async function Exps() {
   const { userId } = auth()
 
-  if (!userId) {
-    return redirect('/')
-  }
   if (!userId || !isAdminUser(userId)) {
     return redirect('/')
   }
 
   // Fetch the admin ID from environment variables
-  const ADMIN_ID = process.env.ADMIN_ID
+  const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
 
   let exps
 

@@ -31,7 +31,7 @@ export default function Actions({ disabled, isPublished, courseId }: ActionsProp
 
   // Check if the user is an admin
   useEffect(() => {
-    const adminId = process.env.ADMIN_ID
+    const adminId = process.env.NEXT_PUBLIC_ADMIN_ID
     setIsAdmin(userId === adminId)
   }, [userId])
 
