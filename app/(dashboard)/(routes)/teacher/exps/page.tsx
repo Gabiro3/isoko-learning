@@ -8,7 +8,7 @@ import { isAdminUser } from '@/lib/check-admin'
 export default async function Exps() {
   const { userId } = auth()
 
-  if (!userId || !isAdminUser(userId)) {
+  if (!userId || isAdminUser(userId)) {
     return redirect('/')
   }
 

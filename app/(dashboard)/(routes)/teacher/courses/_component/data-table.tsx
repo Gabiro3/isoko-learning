@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
         />
 
         {/* Conditionally render the "New Course" button for teachers (not admins) */}
-        {isAdmin && (
+        {!isAdmin && (
           <Link href="/teacher/create">
             <Button>
               <PlusCircle className="mr-2 h-4 w-4" />
