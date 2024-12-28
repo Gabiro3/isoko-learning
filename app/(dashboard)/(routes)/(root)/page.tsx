@@ -11,7 +11,6 @@ export default async function Dashboard() {
   const { userId } = auth()
   const insertDefaultCategories = async () => {
     const categories = ['Robotics Engineering', 'IoT', 'Raspberry Pi', 'Arduino', 'Python', 'C++', 'Notion', 'Calendar', 'Slack', 'Tools']
-  
     for (const category of categories) {
       await db.category.upsert({
         where: { name: category },
@@ -24,7 +23,7 @@ export default async function Dashboard() {
   if (!userId) {
     return redirect('/')
   }
-  insertDefaultCategories();
+  await insertDefaultCategories()
 
   // Get the ADMIN_ID from environment variables
   const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
