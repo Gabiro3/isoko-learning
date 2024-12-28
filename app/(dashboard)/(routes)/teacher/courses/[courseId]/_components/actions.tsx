@@ -19,7 +19,6 @@ type ActionsProps = {
 
 export default function Actions({ disabled, isPublished, courseId }: ActionsProps) {
   const [isLoading, setIsLoading] = useState(false)
-  const [isAdmin, setIsAdmin] = useState(false)
   const router = useRouter()
   const confetti = useConfettiStore()
   const { userId } = useAuth()
@@ -28,12 +27,6 @@ export default function Actions({ disabled, isPublished, courseId }: ActionsProp
   if (!isTeacher(userId)) {
     redirect('/')
   }
-
-  // Check if the user is an admin
-  useEffect(() => {
-    const adminId = process.env.NEXT_PUBLIC_ADMIN_ID
-    setIsAdmin(userId === adminId)
-  }, [userId])
 
   const onDelete = async () => {
     try {
