@@ -3,17 +3,15 @@
 import { Category } from '@prisma/client'
 import {
   FcEngineering,
-  FcMultipleDevices,
-  FcOldTimeCamera,
-  FcSalesPerformance,
-  FcGlobe,
-  FcBusinessman,
-  FcCalculator,
-  FcReading,
-  FcBiohazard,
-  FcBiotech,
-  FcBiomass,
-  FcConferenceCall
+  FcElectronics,
+  FcAutomotive,
+  FcElectroDevices,
+  FcCommandLine,
+  FcDataSheet,
+  FcCollaboration,
+  FcCalendar,
+  FcWorkflow,
+  FcShipped
 } from 'react-icons/fc'
 import { IconType } from 'react-icons'
 import { CategoryItem } from './category-item'
@@ -22,20 +20,18 @@ interface CategoriesProps {
   items: Category[]
 }
 
-// Updated icon map with relevant icons for the provided categories
+// Updated icon map with relevant icons for robotics and workplace tools
 const iconMap: Record<Category['name'], IconType> = {
-  Mathematics: FcCalculator,
-  Chemistry: FcBiohazard,
-  Physics: FcEngineering,
-  Biology: FcBiotech,
-  Languages: FcReading,
-  Technology: FcMultipleDevices,
-  History: FcBusinessman,
-  Geography: FcGlobe,
-  Economics: FcSalesPerformance,
-  'Arts & Literature': FcOldTimeCamera,
-  Science: FcBiomass,
-  Religion: FcConferenceCall
+  IoT: FcElectroDevices,
+  'Raspberry Pi': FcElectronics,
+  Arduino: FcAutomotive,
+  Python: FcCommandLine,
+  'C++': FcDataSheet,
+  Notion: FcCollaboration,
+  Calendar: FcCalendar,
+  Slack: FcWorkflow,
+  Tools: FcShipped,
+  'Robotics Engineering': FcEngineering
 }
 
 export const Categories = ({ items }: CategoriesProps) => {
@@ -49,3 +45,4 @@ export const Categories = ({ items }: CategoriesProps) => {
     </div>
   )
 }
+
