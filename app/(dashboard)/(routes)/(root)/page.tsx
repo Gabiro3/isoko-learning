@@ -5,25 +5,24 @@ import CoursesList from '@/components/course-list'
 import { getDashboardCourses } from '@/actions/get-dashboard-courses'
 import { getAdminAnalytics } from '@/actions/get-admin-courses'
 import { InfoCard } from './_components/info-card'
-import { db } from '@/lib/db'
 
 export default async function Dashboard() {
   const { userId } = auth()
-  const insertDefaultCategories = async () => {
-    const categories = ['Robotics Engineering', 'IoT', 'Raspberry Pi', 'Arduino', 'Python', 'C++', 'Notion', 'Calendar', 'Slack', 'Tools']
-    for (const category of categories) {
-      await db.category.upsert({
-        where: { name: category },
-        update: {}, // No update needed, just ensure it exists
-        create: { name: category },
-      })
-    }
-  }
+  // const insertDefaultCategories = async () => {
+  //   const categories = ['Robotics Engineering', 'IoT', 'Raspberry Pi', 'Arduino', 'Python', 'C++', 'Notion', 'Calendar', 'Slack', 'Tools']
+  //   for (const category of categories) {
+  //     await db.category.upsert({
+  //       where: { name: category },
+  //       update: {}, // No update needed, just ensure it exists
+  //       create: { name: category },
+  //     })
+  //   }
+  // }
 
   if (!userId) {
     return redirect('/')
   }
-  await insertDefaultCategories()
+  // await insertDefaultCategories()
 
   // Get the ADMIN_ID from environment variables
   const ADMIN_ID = process.env.NEXT_PUBLIC_ADMIN_ID
