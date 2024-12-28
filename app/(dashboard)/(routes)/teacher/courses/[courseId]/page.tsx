@@ -22,7 +22,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   }
 
   const course = await db.course.findUnique({
-    where: { id: params.courseId, createdById: userId },
+    where: { id: params.courseId },
     include: { attachments: { orderBy: { createdAt: 'desc' } }, chapters: { orderBy: { position: 'asc' } } },
   })
 

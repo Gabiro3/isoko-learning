@@ -15,11 +15,6 @@ const guestRoutes = [
     label: 'Browse',
     href: '/search',
   },
-  {
-    icon: Shapes,
-    label: 'Explainations',
-    href: '/exp',
-  },
 ]
 
 const teacherRoutes = [
