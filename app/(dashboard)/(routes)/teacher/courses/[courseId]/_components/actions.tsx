@@ -1,7 +1,7 @@
 'use client'
 
 import { TrashIcon } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { redirect, useRouter } from 'next/navigation'
