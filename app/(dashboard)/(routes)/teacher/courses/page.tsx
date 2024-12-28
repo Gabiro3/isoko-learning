@@ -11,7 +11,7 @@ export default async function Courses() {
     return redirect('/')
   }
 
-  let courses = await db.course.findMany({
+  const courses = await db.course.findMany({
     orderBy: { createdAt: 'desc' },
   })
 
