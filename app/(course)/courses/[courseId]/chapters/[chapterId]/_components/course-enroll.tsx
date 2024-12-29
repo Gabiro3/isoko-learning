@@ -35,7 +35,7 @@ export default function CourseEnrollButton({ userId, courseId }: CourseEnrollBut
 
       if (response.ok) {
         toast.success(result.message)
-        router.push('/') // Redirect to home page
+        router.refresh()
       } else {
         toast.error(result.message)
       }
