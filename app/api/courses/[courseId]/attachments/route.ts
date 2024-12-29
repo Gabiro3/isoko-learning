@@ -26,7 +26,7 @@ export async function POST(request: NextRequest, { params }: { params: { courseI
     const attachment = await db.attachment.create({
       data: {
         url,
-        name: `File ${url.split('/').pop()?.substring(0, 2) || ''}`, // Prefix with "File" and append the first two characters
+        name: `Course File : ${url.split('.').pop()}`, // Prefix with "File" and append the first two characters
         courseId: params.courseId,
       },
     })
