@@ -11,7 +11,8 @@ import {
   FcCollaboration,
   FcCalendar,
   FcWorkflow,
-  FcShipped
+  FcShipped,
+  FcMindMap
 } from 'react-icons/fc'
 import { IconType } from 'react-icons'
 import { CategoryItem } from './category-item'
@@ -31,7 +32,8 @@ const iconMap: Record<Category['name'], IconType> = {
   Calendar: FcCalendar,
   Slack: FcWorkflow,
   Tools: FcShipped,
-  'Robotics Engineering': FcEngineering
+  'Robotics Engineering': FcEngineering,
+  'AI programming': FcMindMap
 }
 
 export const Categories = ({ items }: CategoriesProps) => {
