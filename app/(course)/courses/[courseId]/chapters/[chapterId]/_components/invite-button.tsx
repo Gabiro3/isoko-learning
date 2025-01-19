@@ -43,7 +43,6 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
       })
 
       if (response.ok) {
-        
         // Redirect to quiz platform
         window.location.href = `https://techrise-quiz.vercel.app?courseId=${courseId}&userId=${userId}`
       } else {
