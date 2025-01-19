@@ -5,8 +5,8 @@ import toast from 'react-hot-toast'
 import { Button } from '@/components/ui/button'
 
 export default function AttemptQuizButton({ courseId, userId }: { courseId: string; userId: string }) {
-  const [score, setScore] = useState<number | null>(null)  // To store the user's score or null if no score exists
-  const [isHovered, setIsHovered] = useState(false)  // To manage the tooltip visibility
+  const [score, setScore] = useState<number | null>(null) // To store the user's score or null if no score exists
+  const [isHovered, setIsHovered] = useState(false) // To manage the tooltip visibility
 
   // Fetch score when component mounts
   useEffect(() => {
@@ -19,9 +19,9 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
         if (response.ok) {
           const data = await response.json()
           if (data.score === null) {
-            setScore(null)  // If score is null, we render the "Attempt Quiz" button
+            setScore(null) // If score is null, we render the "Attempt Quiz" button
           } else {
-            setScore(data.score)  // Set score if a valid score is returned
+            setScore(data.score) // Set score if a valid score is returned
           }
         } else {
           toast.error('Failed to fetch score. Please try again.')
@@ -32,7 +32,7 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
     }
 
     fetchScore()
-  }, [courseId, userId])  // Run the effect when courseId or userId changes
+  }, [courseId, userId]) // Run the effect when courseId or userId changes
 
   // Handler for clicking the button
   const handleAttemptQuiz = async () => {
@@ -70,7 +70,7 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
 
           {isHovered && (
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 p-2 bg-black text-white text-sm rounded shadow-lg">
-              Only attempt the quiz if you're confident that you understand the material covered.
+              Only attempt the quiz if you&apos;re confident that you understand the material covered.
             </div>
           )}
         </Button>
@@ -82,4 +82,3 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
     </div>
   )
 }
-
