@@ -24,6 +24,7 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
             setScore(data.score) // Set score if a valid score is returned
           }
         } else {
+          console.log(response)
           toast.error('Failed to fetch score. Please try again.')
         }
       } catch (error) {
