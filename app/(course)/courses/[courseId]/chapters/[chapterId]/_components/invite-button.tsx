@@ -12,7 +12,7 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
   useEffect(() => {
     const fetchScore = async () => {
       try {
-        const response = await fetch(`https://techrise-quiz.vercel.app/api/get_score?courseId=${courseId}&userId=${userId}`, {
+        const response = await fetch(`https://techrise-quiz.vercel.app/api/check_score?courseId=${courseId}&userId=${userId}`, {
           method: 'GET',
         })
 
@@ -39,7 +39,7 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
   const handleAttemptQuiz = async () => {
     try {
       // Send GET request to fetch score again when clicking the button (optional, in case it's needed)
-      const response = await fetch(`https://techrise-quiz.vercel.app/api/get_score?courseId=${courseId}&userId=${userId}`, {
+      const response = await fetch(`https://techrise-quiz.vercel.app/api/check_score?courseId=${courseId}&userId=${userId}`, {
         method: 'GET',
       })
 
