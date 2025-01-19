@@ -24,7 +24,6 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
             setScore(data.score) // Set score if a valid score is returned
           }
         } else {
-          console.log(response)
           toast.error('Failed to fetch score. Please try again.')
         }
       } catch (error) {
@@ -44,12 +43,9 @@ export default function AttemptQuizButton({ courseId, userId }: { courseId: stri
       })
 
       if (response.ok) {
-        // Store courseId and userId in localStorage
-        localStorage.setItem('courseId', courseId)
-        localStorage.setItem('userId', userId)
-
+        
         // Redirect to quiz platform
-        window.location.href = 'https://techrise-quiz.vercel.app'
+        window.location.href = `https://techrise-quiz.vercel.app?courseId=${courseId}&userId=${userId}`
       } else {
         toast.error('Failed to fetch score. Please try again.')
       }
