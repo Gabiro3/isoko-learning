@@ -1,6 +1,7 @@
 'use client'
 
 import { UserButton, useAuth } from '@clerk/nextjs'
+import { Suspense } from 'react'
 import { usePathname } from 'next/navigation'
 import { LogOut } from 'lucide-react'
 import Link from 'next/link'
@@ -9,7 +10,6 @@ import { Button } from '@/components/ui/button'
 import { SearchInput } from './search-input'
 import { isTeacher } from '@/lib/teacher'
 import { isAdminUser } from '@/lib/check-admin'
-import { Suspense } from 'react'
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth()
