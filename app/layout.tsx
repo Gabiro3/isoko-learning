@@ -8,8 +8,8 @@ import { ConfettiProvider } from '@/components/providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Techrise LMS | Dashboard',
-  description: 'Techrise is an LMS (Learning Management System) and an online tutoring platform.',
+  title: 'Isoko Online Learning Platform',
+  description: 'Isoko is an online learning platform that helps you learn new skills and advance your agricultural career.',
   // Favicon meta should be added here, but we'll also include it in the <head> for accuracy.
 }
 

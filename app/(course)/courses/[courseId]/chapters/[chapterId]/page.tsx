@@ -7,14 +7,12 @@ import { getChapter } from '@/actions/get-chapter'
 import { Separator } from '@/components/ui/separator'
 import { CourseProgressButton } from './_components/course-progress-button'
 import CourseEnrollButton from './_components/course-enroll'
-import AttemptQuizButton from './_components/invite-button'
 
 export default async function ChapterDetails({ params }: { params: { courseId: string; chapterId: string } }) {
   const { userId } = auth()
   if (!userId) {
     return redirect('/')
   }
-
   const { chapter, course, attachments, nextChapter, userProgress, purchase } = await getChapter({
     userId,
     ...params,
@@ -58,7 +56,6 @@ export default async function ChapterDetails({ params }: { params: { courseId: s
               ) : (
                 <CourseEnrollButton courseId={params.courseId} userId={userId} />
               )}
-              <AttemptQuizButton courseId={params.courseId} userId={userId}/>
             </div>
           </div>
 

@@ -7,12 +7,12 @@ import { SidebarItem } from './sidebar-item'
 const guestRoutes = [
   {
     icon: Layout,
-    label: 'Dashboard',
+    label: 'Ahabanza',
     href: '/',
   },
   {
     icon: Compass,
-    label: 'Browse',
+    label: 'Shakisha',
     href: '/search',
   },
 ]
@@ -20,12 +20,12 @@ const guestRoutes = [
 const teacherRoutes = [
   {
     icon: List,
-    label: 'Courses',
+    label: 'Amasomo yose',
     href: '/teacher/courses',
   },
   {
     icon: BarChart,
-    label: 'Analytics',
+    label: 'Uko abahinzi bize',
     href: '/teacher/analytics',
   },
 ]

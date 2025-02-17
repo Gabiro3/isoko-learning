@@ -40,7 +40,7 @@ export const SearchInput = () => {
         onChange={(e) => setValue(e.target.value)}
         value={value}
         className="w-full rounded-full bg-slate-100 pl-9 focus-visible:ring-slate-200 md:w-[300px]"
-        placeholder="Search for a course"
+        placeholder="Shakisha. Urugero: Gusaba inguzanyo, kugenzura ubuziranenge, ..."
       />
     </div>
   )

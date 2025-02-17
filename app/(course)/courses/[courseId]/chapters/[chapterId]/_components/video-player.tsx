@@ -73,7 +73,7 @@ export const VideoPlayer = ({
   }, [])
 
   return (
-    <div className="relative aspect-video">
+    <div className="relative aspect-video w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
       {!isReady && !isLocked && (
         <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
           <Loader2 className="h-8 w-8 animate-spin text-secondary" />

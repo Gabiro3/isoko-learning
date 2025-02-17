@@ -3,16 +3,11 @@
 import { Category } from '@prisma/client'
 import {
   FcEngineering,
-  FcElectronics,
-  FcAutomotive,
   FcElectroDevices,
-  FcCommandLine,
-  FcDataSheet,
-  FcCollaboration,
-  FcCalendar,
-  FcWorkflow,
-  FcShipped,
-  FcMindMap
+  FcApproval,
+  FcBullish,
+  FcMindMap,
+  FcPlus
 } from 'react-icons/fc'
 import { IconType } from 'react-icons'
 import { CategoryItem } from './category-item'
@@ -23,17 +18,12 @@ interface CategoriesProps {
 
 // Updated icon map with relevant icons for robotics and workplace tools
 const iconMap: Record<Category['name'], IconType> = {
-  IoT: FcElectroDevices,
-  'Raspberry Pi': FcElectronics,
-  Arduino: FcAutomotive,
-  Python: FcCommandLine,
-  'C++': FcDataSheet,
-  Notion: FcCollaboration,
-  Calendar: FcCalendar,
-  Slack: FcWorkflow,
-  Tools: FcShipped,
-  'Robotics Engineering': FcEngineering,
-  'AI programming': FcMindMap
+  'Kwirinda ibiza': FcElectroDevices,
+  'Gusaba inguzanyo': FcBullish,
+  'Ubuhinzi bwa kijyambere': FcEngineering,
+  'Kugenzura ubuziranenge bw’ibiribwa': FcApproval,
+  'Korora bya kijyambere': FcMindMap,
+  'Ubuhinzi n’ibiribwa': FcPlus
 }
 
 export const Categories = ({ items }: CategoriesProps) => {
