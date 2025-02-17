@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { Banner } from '@/components/banner'
 import { Preview } from '@/components/preview'
@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator'
 import InviteButton from './_components/invite-button'
 
 export default async function ExpDetails({ params }: { params: { courseId: string; chapterId: string } }) {
-  const { userId } = auth()
+  const { userId } = await auth()
   if (!userId) {
     return redirect('/')
   }

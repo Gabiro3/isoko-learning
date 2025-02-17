@@ -1,11 +1,11 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { isTeacher } from '@/lib/teacher'
 
 export async function PATCH(req: Request, { params }: { params: { courseId: string } }) {
   try {
-    const { userId } = auth()
+    const { userId } = await auth()
     const { courseId } = params
     const values = await req.json()
 
@@ -36,7 +36,7 @@ export async function PATCH(req: Request, { params }: { params: { courseId: stri
 
 export async function DELETE(req: NextRequest, { params }: { params: { courseId: string } }) {
   try {
-    const { userId } = auth()
+    const { userId } = await auth()
 
     if (!userId || !isTeacher(userId)) {
       return new NextResponse('Unauthorized', { status: 401 })

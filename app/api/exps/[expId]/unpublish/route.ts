@@ -1,11 +1,11 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
 // Please note that course here can be used interchangeably with explaination
 export async function PATCH(req: NextRequest, { params }: { params: { courseId: string } }) {
   try {
-    const { userId } = auth()
+    const { userId } = await auth()
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 })
     }

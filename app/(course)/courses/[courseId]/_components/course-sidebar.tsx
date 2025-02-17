@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { Prisma } from '@prisma/client'
 import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
@@ -11,7 +11,7 @@ type CourseSidebarProps = {
 }
 
 export default async function CourseSidebar({ course, progressCount }: CourseSidebarProps) {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return redirect('/')

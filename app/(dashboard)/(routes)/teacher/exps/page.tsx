@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
 import { DataTable } from './_component/data-table'
@@ -6,7 +6,7 @@ import { columns } from './_component/columns'
 import { isAdminUser } from '@/lib/check-admin'
 
 export default async function Exps() {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId || isAdminUser(userId)) {
     return redirect('/')

@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { CircleDollarSign, File, LayoutDashboard, ListChecks } from 'lucide-react'
 
@@ -15,7 +15,7 @@ import { Banner } from '@/components/banner'
 import Actions from './_components/actions'
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return redirect('/')

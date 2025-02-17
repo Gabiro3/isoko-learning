@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { Banner } from '@/components/banner'
 import { Preview } from '@/components/preview'
@@ -9,7 +9,7 @@ import { CourseProgressButton } from './_components/course-progress-button'
 import CourseEnrollButton from './_components/course-enroll'
 
 export default async function ChapterDetails({ params }: { params: { courseId: string; chapterId: string } }) {
-  const { userId } = auth()
+  const { userId } = await auth()
   if (!userId) {
     return redirect('/')
   }

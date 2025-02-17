@@ -1,4 +1,5 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
+import React, { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 
 import { db } from '@/lib/db'
@@ -15,7 +16,7 @@ interface SearchPageProps {
 }
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return redirect('/')
@@ -33,7 +34,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   })
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className="block px-6 pt-6 md:mb-0 md:hidden">
         <SearchInput />
       </div>
@@ -41,7 +42,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
         <Categories items={categories} />
         <CoursesList items={courses} />
       </div>
-    </>
+    </Suspense>
   )
 }
 

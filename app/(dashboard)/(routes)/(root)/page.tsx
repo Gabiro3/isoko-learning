@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { CheckCircle, Clock, Check } from 'lucide-react'
 import CoursesList from '@/components/course-list'
@@ -7,7 +7,7 @@ import { getAdminAnalytics } from '@/actions/get-admin-courses'
 import { InfoCard } from './_components/info-card'
 
 export default async function Dashboard() {
-  const { userId } = auth()
+  const { userId } = await auth()
   // const insertDefaultCategories = async () => {
   //   const categories = ['Robotics Engineering', 'IoT', 'Raspberry Pi', 'Arduino', 'Python', 'C++', 'Notion', 'Calendar', 'Slack', 'Tools']
   //   for (const category of categories) {

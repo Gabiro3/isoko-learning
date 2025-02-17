@@ -2,7 +2,7 @@
 
 import qs from 'query-string'
 import { Search } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 
 import { Input } from '@/components/ui/input'
@@ -34,6 +34,7 @@ export const SearchInput = () => {
   }, [debouncedValue, currentCategoryId, router, pathname])
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="relative">
       <Search className="absolute left-3 top-3 h-4 w-4 text-slate-600" />
       <Input
@@ -43,5 +44,6 @@ export const SearchInput = () => {
         placeholder="Shakisha. Urugero: Gusaba inguzanyo, kugenzura ubuziranenge, ..."
       />
     </div>
+    </Suspense>
   )
 }

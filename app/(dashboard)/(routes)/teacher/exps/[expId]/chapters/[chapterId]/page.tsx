@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Eye, LayoutDashboard, Video } from 'lucide-react'
@@ -14,7 +14,7 @@ import { ChapterVideoForm } from './_components/chapter-video-form'
 import { ChapterActions } from './_components/chapter-actions'
 
 const ChapterIdPage = async ({ params }: { params: { courseId: string; chapterId: string } }) => {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return redirect('/')

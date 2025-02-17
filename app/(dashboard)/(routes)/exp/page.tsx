@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 
 import { db } from '@/lib/db'
@@ -15,7 +15,7 @@ interface SearchExpProps {
 }
 
 const ExpPage = async ({ searchParams }: SearchExpProps) => {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return redirect('/')

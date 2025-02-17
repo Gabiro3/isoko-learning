@@ -1,11 +1,11 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { isTeacher } from '@/lib/teacher'
 
 export async function POST(request: NextRequest, { params }: { params: { courseId: string } }) {
   try {
-    const { userId } = auth()
+    const { userId } = await auth()
     const { url } = await request.json()
 
     if (!userId || !isTeacher(userId)) {

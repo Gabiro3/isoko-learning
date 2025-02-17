@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { File, LayoutDashboard, ListChecks } from 'lucide-react'
 
@@ -14,7 +14,7 @@ import { Banner } from '@/components/banner'
 import Actions from './_components/actions'
 
 const ExpIdPage = async ({ params }: { params: { expId: string } }) => {
-  const { userId } = auth()
+  const { userId } = await auth()
 
   if (!userId) {
     return redirect('/')
