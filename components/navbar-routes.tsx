@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { SearchInput } from './search-input'
 import { isTeacher } from '@/lib/teacher'
 import { isAdminUser } from '@/lib/check-admin'
+import { Suspense } from 'react'
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth()
@@ -21,9 +22,11 @@ export const NavbarRoutes = () => {
   return (
     <>
       {isSearchPage && (
-        <div className="hidden md:block">
-          <SearchInput />
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="hidden md:block">
+            <SearchInput />
+          </div>
+        </Suspense>
       )}
       <div className="ml-auto flex gap-x-2">
         {isTeacherPage || isCoursePage ? (
