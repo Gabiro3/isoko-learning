@@ -20,7 +20,7 @@ export default async function Dashboard() {
   // }
 
   if (!userId) {
-    return redirect('/')
+    return redirect('/sign-in')
   }
   // await insertDefaultCategories()
 
@@ -47,7 +47,7 @@ export default async function Dashboard() {
   return (
     <div className="space-y-4 p-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <InfoCard icon={Clock} label="Amasomo utararangiza" numberOfItems={coursesInProgress.length} />
+        <InfoCard icon={Clock} label="Amasomo utararangira" numberOfItems={coursesInProgress.length} />
         <InfoCard icon={CheckCircle} label="Amasomo warangije" numberOfItems={completedCourses.length} variant="success" />
       </div>
       <CoursesList items={[...coursesInProgress, ...completedCourses]} />
